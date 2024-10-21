@@ -36,9 +36,12 @@ jobs:
 
       # This is the secret sauce for getting GitHub to work with Azure
       # Create an "Enterprise application" (App Registration) in Entra (Azure Databricks)
-      # Create a "Federated Credential" for that App Registration
+      # Create a "Federated Credential" for that App Registration ("bcb3654v1app")
       # (https://learn.microsoft.com/en-us/entra/workload-id/workload-identity-federation-create-trust?pivots=identity-wif-apps-methods-azp#github-actions)
+      # (Certificates and Secrets)
       # (example: {Organization: brian-brown-improving-com, Repository: github-actions, Entity type: branch, Based on selection: main})
+
+      # AADSTS700213: No matching federated identity record found for presented assertion subject 'repo:brian-brown-improving-com/upload-dbfs-temp:ref:refs/heads/main'. Please note that the matching is done using a case-sensitive comparison. Check your federated identity credential Subject, Audience and Issuer against the presented assertion. https://learn.microsoft.com/entra/workload-id/workload-identity-federation Trace ID: 0b7f071e-562b-413a-a969-3514ff0f0600 Correlation ID: 50ba4580-bd10-4e40-9a78-27c1845fb6c0 Timestamp: 2024-10-21 17:13:36Z
 
       # Obtain an AAD token and use it to upload to Databricks.
       # Note: If running on AWS or GCP, you can directly pass your service principal
